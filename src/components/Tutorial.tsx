@@ -109,7 +109,10 @@ export const Tutorial = memo(function Tutorial({ isOpen, onClose }: TutorialProp
   }
 
   const getTooltipPosition = (): React.CSSProperties => {
-    if (!highlightRect || step.position === 'center') {
+    // On mobile, always center the tooltip
+    const isMobile = window.innerWidth < 640
+
+    if (isMobile || !highlightRect || step.position === 'center') {
       return {
         top: '50%',
         left: '50%',
@@ -174,35 +177,35 @@ export const Tutorial = memo(function Tutorial({ isOpen, onClose }: TutorialProp
 
       {/* Tooltip */}
       <div
-        className="absolute bg-white rounded-lg shadow-2xl p-6 max-w-md z-10"
+        className="absolute bg-white rounded-lg shadow-2xl p-4 sm:p-6 w-[90vw] sm:w-auto max-w-md max-h-[80vh] overflow-y-auto z-10"
         style={getTooltipPosition()}
       >
         {/* Step indicator */}
-        <div className="text-sm text-gray-500 mb-2">
+        <div className="text-xs sm:text-sm text-gray-500 mb-2">
           Samm {currentStep + 1} / {TUTORIAL_STEPS.length}
         </div>
 
         {/* Title */}
-        <h3 className="text-xl font-bold mb-3 text-gray-900">{step.title}</h3>
+        <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-gray-900">{step.title}</h3>
 
         {/* Description */}
-        <p className="text-gray-700 mb-6">{step.description}</p>
+        <p className="text-sm sm:text-base text-gray-700 mb-4 sm:mb-6">{step.description}</p>
 
         {/* Actions */}
-        <div className="flex items-center justify-between gap-3">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2 sm:gap-3">
           <button
             onClick={handleSkip}
-            className="px-4 py-2 text-gray-600 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 rounded"
+            className="px-3 sm:px-4 py-2 text-sm sm:text-base text-gray-600 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-400 rounded order-2 sm:order-1"
             aria-label="Jäta vahele"
           >
             Jäta vahele
           </button>
 
-          <div className="flex gap-2">
+          <div className="flex gap-2 order-1 sm:order-2">
             {!isFirstStep && (
               <button
                 onClick={handlePrev}
-                className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400"
+                className="flex-1 sm:flex-none px-3 sm:px-4 py-2 text-sm sm:text-base bg-gray-200 text-gray-800 rounded hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400"
                 aria-label="Eelmine"
               >
                 Eelmine
@@ -210,7 +213,7 @@ export const Tutorial = memo(function Tutorial({ isOpen, onClose }: TutorialProp
             )}
             <button
               onClick={handleNext}
-              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="flex-1 sm:flex-none px-3 sm:px-4 py-2 text-sm sm:text-base bg-blue-600 text-white rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
               aria-label={isLastStep ? 'Valmis' : 'Järgmine'}
             >
               {isLastStep ? 'Valmis' : 'Järgmine'}
