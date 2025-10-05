@@ -15,16 +15,16 @@ const TOPICS_LABELS: Record<Topic, string> = {
   infrastruktuur: 'Infrastruktuur',
 }
 
-const SORT_OPTIONS: { value: SortOption; label: string }[] = [
-  { value: 'alphabetical', label: 'Tähestikuline' },
-  { value: 'proposals_desc', label: 'Uusi ettepanekuid ↓' },
-  { value: 'proposals_asc', label: 'Uusi ettepanekuid ↑' },
-  { value: 'fulfilled_desc', label: 'Täidetud lubadusi ↓' },
-  { value: 'fulfilled_asc', label: 'Täidetud lubadusi ↑' },
-  { value: 'partial_desc', label: 'Osaliselt ↓' },
-  { value: 'partial_asc', label: 'Osaliselt ↑' },
-  { value: 'unfulfilled_desc', label: 'Ei ↓' },
-  { value: 'unfulfilled_asc', label: 'Ei ↑' },
+const SORT_OPTIONS: { value: SortOption; label: string; shortLabel: string }[] = [
+  { value: 'alphabetical', label: 'Tähestikuline', shortLabel: 'A-Z' },
+  { value: 'proposals_desc', label: 'Uusi ettepanekuid ↓', shortLabel: 'Uued ↓' },
+  { value: 'proposals_asc', label: 'Uusi ettepanekuid ↑', shortLabel: 'Uued ↑' },
+  { value: 'fulfilled_desc', label: 'Täidetud lubadusi ↓', shortLabel: 'Täidetud ↓' },
+  { value: 'fulfilled_asc', label: 'Täidetud lubadusi ↑', shortLabel: 'Täidetud ↑' },
+  { value: 'partial_desc', label: 'Osaliselt ↓', shortLabel: 'Osaliselt ↓' },
+  { value: 'partial_asc', label: 'Osaliselt ↑', shortLabel: 'Osaliselt ↑' },
+  { value: 'unfulfilled_desc', label: 'Ei ↓', shortLabel: 'Ei ↓' },
+  { value: 'unfulfilled_asc', label: 'Ei ↑', shortLabel: 'Ei ↑' },
 ]
 
 interface FiltersProps {
@@ -148,19 +148,20 @@ export const FiltersComponent = memo(function FiltersComponent({
       {/* Sortimine */}
       <div className="mb-6">
         <h3 className="text-sm font-medium mb-3 text-gray-200">Sortimine</h3>
-        <div className="space-y-2">
+        <div className="grid grid-cols-2 gap-2">
           {SORT_OPTIONS.map(option => (
             <button
               key={option.value}
               onClick={() => handleSortChange(option.value)}
-              className={`w-full px-3 py-2 rounded-md text-sm text-left transition-all ${
+              className={`px-2 py-2 rounded-md text-xs text-center transition-all ${
                 filters.sortBy === option.value
                   ? 'bg-indigo-600 text-white shadow-md'
                   : 'bg-slate-700/50 text-gray-300 hover:bg-slate-600/50'
               }`}
               aria-label={option.label}
+              title={option.label}
             >
-              {option.label}
+              {option.shortLabel}
             </button>
           ))}
         </div>
