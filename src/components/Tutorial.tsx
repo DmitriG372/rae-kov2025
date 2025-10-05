@@ -26,8 +26,8 @@ const TUTORIAL_STEPS: TutorialStep[] = [
     position: 'bottom',
   },
   {
-    title: 'Ülevaade ja Kõrvutus',
-    description: 'Kahe tabi vahel saad lülituda: "Ülevaade" näitab graafikuid ja statistikat, "Kõrvutus" näitab valitud erakondi detailselt kõrvuti (max 3).',
+    title: 'Vahelehti',
+    description: 'Kolme tabi vahel saad lülituda: "Ülevaade" näitab graafikuid ja statistikat, "Kõrvutus" näitab valitud erakondi detailselt kõrvuti (max 3), "Programm" võimaldab valida ühe erakonna ja lugeda tema täielikku programmi.',
     targetId: 'tabs-section',
     position: 'bottom',
   },
