@@ -2,7 +2,8 @@ import type { Party } from './types'
 
 export async function loadParties(): Promise<Party[]> {
   try {
-    const response = await fetch('/initData.md')
+    const base = import.meta.env.BASE_URL || '/'
+    const response = await fetch(`${base}initData.md`)
     if (!response.ok) {
       throw new Error(`HTTP viga: ${response.status}`)
     }
