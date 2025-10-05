@@ -67,8 +67,8 @@ export const FiltersComponent = memo(function FiltersComponent({
   }
 
   return (
-    <div className="w-80 bg-slate-800/50 backdrop-blur-sm border-r border-slate-700/50 p-6 overflow-y-auto shadow-2xl">
-      <h2 className="text-lg font-semibold mb-4 text-white">Filtrid</h2>
+    <div className="w-80 lg:w-96 bg-slate-800/50 backdrop-blur-sm border-r border-slate-700/50 p-4 sm:p-6 overflow-y-auto shadow-2xl h-full">
+      <h2 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-white">Filtrid</h2>
 
       {/* Erakonnad */}
       <div className="mb-6">
