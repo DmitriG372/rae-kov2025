@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo, useCallback } from 'react'
 import html2canvas from 'html2canvas'
-import type { Party, Filters, PromiseStatus, Topic, SortOption } from './lib/types'
+import type { Party, Filters } from './lib/types'
 import { loadParties } from './lib/parseInitData'
 import { getFiltersFromURL, updateURL } from './lib/urlState'
 import { FiltersComponent } from './components/Filters'
